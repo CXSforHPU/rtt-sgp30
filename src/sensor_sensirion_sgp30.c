@@ -200,7 +200,7 @@ static rt_err_t _sgp30_set_humidity(struct rt_i2c_bus_device *i2c_bus, void *arg
     return RT_EOK;
 }
 
-static rt_size_t _sgp30_polling_get_data(struct rt_sensor_device *sensor, void *buf)
+static RT_SIZE_TYPE _sgp30_polling_get_data(struct rt_sensor_device *sensor, void *buf)
 {
     struct rt_sensor_data *sensor_data = buf;
     struct rt_i2c_bus_device *i2c_bus = (struct rt_i2c_bus_device *)sensor->config.intf.user_data;
@@ -256,7 +256,7 @@ static rt_size_t _sgp30_polling_get_data(struct rt_sensor_device *sensor, void *
     return 1;
 }
 
-static rt_size_t sgp30_fetch_data(struct rt_sensor_device *sensor, void *buf, rt_size_t len)
+static RT_SIZE_TYPE sgp30_fetch_data(struct rt_sensor_device *sensor, void *buf, rt_size_t len)
 {
     if (sensor->config.mode == RT_SENSOR_MODE_POLLING)
     {

@@ -13,7 +13,6 @@
 
 #include <rtthread.h>
 #include <rtdevice.h>
-#include <sensor.h>
 #include <board.h>
 
 #define SGP30LIB_VERSION               "1.0.0"
@@ -25,6 +24,14 @@
 #define  RT_SENSOR_CTRL_GET_BASELINE   (0x110)   /* Get device id */
 #define  RT_SENSOR_CTRL_SET_BASELINE   (0x111)   /* Set the measure range of sensor. unit is info of sensor */
 #define  RT_SENSOR_CTRL_SET_HUMIDITY   (0x112)   /* Set output date rate. unit is HZ */
+
+#if defined(RT_VERSION_CHECK)
+    #if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 0, 2))
+        #define RT_SIZE_TYPE   rt_ssize_t
+    #else
+        #define RT_SIZE_TYPE   rt_size_t
+    #endif
+#endif
 
 struct sgp30_baseline
 {
